@@ -1,2 +1,1 @@
-# weathertop_js
-Weathertop Javascript assignment
+# Weathertop Realease 1

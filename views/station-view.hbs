@@ -1,0 +1,14 @@
+{{> menu}}
+
+<section class="section">
+  <div class="title">
+    {{station.name}}
+  </div>
+  {{> latest-readings 
+      name=station.name weather=station.weather
+      tempC=station.tempC tempF=station.tempF
+      windBft=station.windBft windDirection=station.windDirection windChill=station.windChill
+      pressure=station.pressure}}
+  {{> list-readings}}
+  {{> add-reading}}
+</section>

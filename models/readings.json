@@ -1,0 +1,32 @@
+{
+  "file": "./models/readings.json",
+  "readings": [
+    {
+      "code": "100",
+      "tempC": "15",
+      "windSpeed": "3",
+      "windDirection": "150",
+      "pressure": "1000",
+      "_id": "650015d6-4805-40e4-a0ce-ac47bf720cf5",
+      "stationid": "6c5df052-76e2-4814-b22a-dcada2447f11"
+    },
+    {
+      "code": "300",
+      "tempC": "25",
+      "windSpeed": "3",
+      "windDirection": "90",
+      "pressure": "900",
+      "_id": "621135cc-9eb1-491a-a2cd-04a1355d23a7",
+      "stationid": "6c5df052-76e2-4814-b22a-dcada2447f11"
+    },
+    {
+      "code": "300",
+      "tempC": "30",
+      "windSpeed": "4",
+      "windDirection": "45",
+      "pressure": "1001",
+      "_id": "289bbff9-1984-4c49-9ec1-36b71b958bb6",
+      "stationid": "33d532d6-de9a-400d-a58d-338f09ce2b96"
+    }
+  ]
+}

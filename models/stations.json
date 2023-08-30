@@ -1,0 +1,13 @@
+{
+  "file": "./models/stations.json",
+  "stations": [
+    {
+      "name": "Dublin",
+      "_id": "6c5df052-76e2-4814-b22a-dcada2447f11"
+    },
+    {
+      "name": "Galway",
+      "_id": "33d532d6-de9a-400d-a58d-338f09ce2b96"
+    }
+  ]
+}
