@@ -5,10 +5,12 @@
     {{station.name}}
   </div>
   {{> latest-readings 
-      name=station.name weather=station.weather
-      tempC=station.tempC tempF=station.tempF
+      name=station.name weather=station.weather latitude=station.latitude longitude=station.longitude weather=station.weather
+      clear=station.clear partialClouds=station.partialClouds cloudy=station.cloudy lightShowers=station.lightShowers heavyShowers=station.heavyShowers
+      rain=station.rain snow=station.snow thunder=station.thunder
+      tempC=station.tempC tempF=station.tempF minTemp=station.minTemp maxTemp=station.maxTemp minWind=station.minWind maxWind=station.maxWind
       windBft=station.windBft windDirection=station.windDirection windChill=station.windChill
-      pressure=station.pressure}}
+      pressure=station.pressure minPressure=station.minPressure maxPressure=station.maxPressure}}
   {{> list-readings}}
   {{> add-reading}}
 </section>

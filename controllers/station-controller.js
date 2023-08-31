@@ -20,10 +20,10 @@ export const stationController = {
     const station = await stationStore.getStationById(request.params.id);
     const newReading = {
       code: request.body.code,
-      tempC: request.body.tempC,
-      windSpeed: request.body.windSpeed,
+      tempC: Number(request.body.tempC),
+      windSpeed: Number(request.body.windSpeed),
       windDirection: request.body.windDirection,
-      pressure: request.body.pressure,
+      pressure: Number(request.body.pressure),
     };
     
     await readingStore.addReading(station._id, newReading);

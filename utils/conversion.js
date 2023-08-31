@@ -1,7 +1,7 @@
 export const conversion = {
 
   async tempF(tempC) {
-    return (tempC*1.8)+32;
+    return Math.round((tempC*1.8)+32);
   },
   
   async beaufort(windSpeed) {

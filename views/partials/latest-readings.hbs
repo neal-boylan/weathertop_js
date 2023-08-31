@@ -4,10 +4,11 @@
       <div class="card">
         <div class="container has-background-primary has-text-white">
           <h2 class="title">
-            {{name}}
+            {{name}} <br>
+            {{>icons/location}}
           </h2>
-          <br>
-          <br>
+          Lat: {{latitude}} <br>
+          Lng: {{longitude}} <br>
           <br>
           <br>
           <br>
@@ -18,7 +19,15 @@
       <div class="card">
         <div class="container has-background-primary has-text-white">
           <h2 class="title">
-            Weather
+            Weather <br>
+            {{#if clear}} {{>icons/clear}} {{/if}}
+            {{#if cloudy}} {{>icons/cloudy}} {{/if}}
+            {{#if partialClouds}} {{>icons/partial-clouds}} {{/if}}
+            {{#if lightShowers}} {{>icons/light-showers}} {{/if}}
+            {{#if heavyShowers}} {{>icons/heavy-showers}} {{/if}}
+            {{#if rain}} {{>icons/rain}} {{/if}}
+            {{#if snow}} {{>icons/snow}} {{/if}}
+            {{#if thunder}} {{>icons/thunder}} {{/if}}
           </h2>
           {{weather}} <br> 
           <br> 
@@ -32,13 +41,14 @@
       <div class="card">
         <div class="container has-background-primary has-text-white">
           <h2 class="title">
-            Temp
+            Temp <br>
+            {{>icons/temperature}}
           </h2>
             {{tempC}}°C
             <br>
             {{tempF}}°F <br>
-            <br>
-            <br>
+            Max: {{maxTemp}}°C<br>
+            Min: {{minTemp}}°C <br>
             <br>
         </div>
       </div>
@@ -47,14 +57,15 @@
       <div class="card">
         <div class="container has-background-primary has-text-white">
           <h2 class="title">
-            Wind
+            Wind <br>
+            {{>icons/wind}}
           </h2>
           {{windBft}} bft
           <br>
           {{windDirection}} <br>
           Feels like {{windChill}}°C <br>
-          <br>
-          <br>
+          Max: {{maxWind}} bft<br>
+          Min: {{minWind}} bft
         </div>
       </div>
     </div>
@@ -62,12 +73,13 @@
       <div class="card">
         <div class="container has-background-primary has-text-white">
           <h2 class="title">
-            Pressure
+            Pressure <br>
+            {{>icons/pressure}}
           </h2>
           {{pressure}} hpa
           <br>
-          <br>
-          <br>
+          Max: {{maxPressure}} hpa<br>
+          Min: {{minPressure}} hpa<br>
           <br>
           <br>
         </div>
