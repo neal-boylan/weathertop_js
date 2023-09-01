@@ -51,4 +51,29 @@ export const accountsController = {
     return await userStore.getUserByEmail(userEmail);
   },
   
+  async editDetails(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    
+    const viewData = {
+      title: "Edit User Details",
+      user: loggedInUser,
+    };
+    response.render("userdetails-view", viewData);
+  },
+  
+  async update(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const userId = await userStore.getUserById(loggedInUser._id);
+ 
+    const updatedUser = {
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
+      email: request.body.email,
+      password: request.body.password,
+    };
+    console.log(`Updating User ${userId._id}`);
+
+    await userStore.updateUser(userId._id, updatedUser);
+    response.redirect("/login");
+  },
 };

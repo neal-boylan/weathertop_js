@@ -25,16 +25,22 @@ export const stationAnalytics = {
       station.tempC = latestReading.tempC;
       station.tempF =  await conversion.tempF(latestReading.tempC);
       station.maxTemp = await this.maxTemp(readings);
-      station.minTemp = await this.minTemp(readings); 
+      station.minTemp = await this.minTemp(readings);
+      station.tempRising = await this.tempRising(readings);
+      station.tempFalling = await this.tempFalling(readings);
       station.windSpeed = latestReading.windSpeed;
       station.windBft = await conversion.beaufort(latestReading.windSpeed);
       station.windDirection = await conversion.degreesToCompass(latestReading.windDirection);
       station.windChill = await this.windChill(latestReading.tempC, latestReading.windSpeed);
       station.maxWind = await conversion.beaufort(await this.maxWind(readings));
       station.minWind = await conversion.beaufort(await this.minWind(readings));
+      station.windRising = await this.windRising(readings);
+      station.windFalling = await this.windFalling(readings);
       station.pressure = latestReading.pressure;
       station.maxPressure = await this.maxPressure(readings);
       station.minPressure = await this.minPressure(readings);
+      station.pressureRising = await this.pressureRising(readings);
+      station.pressureFalling = await this.pressureFalling(readings);
     }
     else {
       station.code = "N/A";
@@ -126,5 +132,83 @@ export const stationAnalytics = {
       values[i] = readings[i].pressure;
     }
     return await this.min(values);
+  },
+  
+  async tempRising(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].tempC, readings[readings.length-2].tempC, readings[readings.length-1].tempC];
+      if (( values[2] > values[1] ) && (values[1] > values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
+  },
+  
+  async tempFalling(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].tempC, readings[readings.length-2].tempC, readings[readings.length-1].tempC];
+      if (( values[2] < values[1] ) && (values[1] < values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
+  },
+
+  async windRising(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].windSpeed, readings[readings.length-2].windSpeed, readings[readings.length-1].windSpeed];
+      if (( values[2] > values[1] ) && (values[1] > values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
+  },
+  
+  async windFalling(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].windSpeed, readings[readings.length-2].windSpeed, readings[readings.length-1].windSpeed];
+      if (( values[2] < values[1] ) && (values[1] < values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
+  },
+
+  async pressureRising(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].pressure, readings[readings.length-2].pressure, readings[readings.length-1].pressure];
+      if (( values[2] > values[1] ) && (values[1] > values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
+  },
+  
+  async pressureFalling(readings) {
+    let trend = null;
+    if (readings.length > 2) {
+      let values = [readings[readings.length-3].pressure, readings[readings.length-2].pressure, readings[readings.length-1].pressure];
+      if (( values[2] < values[1] ) && (values[1] < values[0])) {
+        trend = true;
+      } else {
+        trend = false;
+      }
+    }
+    return trend;
   },
 };

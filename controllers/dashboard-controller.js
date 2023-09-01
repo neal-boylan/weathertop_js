@@ -11,7 +11,20 @@ export const dashboardController = {
     if (stations.length > 0) {
       stations.forEach((station) => stationAnalytics.getLatestReading(station, station._id));
     }
-                  
+    
+    //sortedStations method taken from https://reactgo.com/javascript-sort-objects-alphabetically/
+    const sortedStations = stations.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1; //nameA comes first
+      }
+      if (nameA > nameB) {
+        return 1; // nameB comes first
+      }
+      return 0;  // names must be equal
+    });
+    
     const viewData = {
       title: "Station Dashboard",
       stations: stations,
@@ -33,5 +46,11 @@ export const dashboardController = {
     response.redirect("/dashboard");
   },
   
+  async deleteStation(request, response) {
+    const stationId = request.params.id;
+    console.log(`Deleting Station ${stationId}`);
+    await stationStore.deleteStationById(stationId);
+    response.redirect("/dashboard");
+  },
 };
 

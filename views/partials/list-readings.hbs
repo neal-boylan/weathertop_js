@@ -1,6 +1,7 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
+      <th>Date and Time</th>
       <th>Code</th>
       <th>Temperature</th>
       <th>Wind Speed</th>
@@ -13,6 +14,9 @@
   <tbody>
     {{#each station.readings}}
     <tr>
+      <td>
+        {{timeAndDate}}
+      </td>
       <td>
         {{code}}
       </td>
@@ -27,6 +31,16 @@
       </td>
       <td>
         {{pressure}}
+      </td>
+      <td>
+        <a href="/station/{{../station._id}}/deletereading/{{_id}}" class="button">
+          {{>icons/delete}}
+        </a>
+      </td>
+      <td>
+        <a href="/station/{{../station._id}}/editreading/{{_id}}" class="button">
+          {{>icons/edit}}
+        </a>
       </td>
     </tr>
     {{/each}}

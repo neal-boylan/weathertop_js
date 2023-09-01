@@ -45,6 +45,8 @@
             {{>icons/temperature}}
           </h2>
             {{tempC}}°C
+            {{#if tempRising}} {{>icons/up-arrow}} {{/if}}
+            {{#if tempFalling}} {{>icons/down-arrow}} {{/if}}
             <br>
             {{tempF}}°F <br>
             Max: {{maxTemp}}°C<br>
@@ -61,6 +63,8 @@
             {{>icons/wind}}
           </h2>
           {{windBft}} bft
+          {{#if windRising}} {{>icons/up-arrow}} {{/if}}
+          {{#if windFalling}} {{>icons/down-arrow}} {{/if}}
           <br>
           {{windDirection}} <br>
           Feels like {{windChill}}°C <br>
@@ -77,6 +81,8 @@
             {{>icons/pressure}}
           </h2>
           {{pressure}} hpa
+          {{#if pressureRising}} {{>icons/up-arrow}} {{/if}}
+          {{#if pressureFalling}} {{>icons/down-arrow}} {{/if}}
           <br>
           Max: {{maxPressure}} hpa<br>
           Min: {{minPressure}} hpa<br>

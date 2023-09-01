@@ -18,16 +18,27 @@ export const stationController = {
 
   async addReading(request, response) {
     const station = await stationStore.getStationById(request.params.id);
+    let d = new Date();
+    
     const newReading = {
       code: request.body.code,
       tempC: Number(request.body.tempC),
       windSpeed: Number(request.body.windSpeed),
       windDirection: request.body.windDirection,
       pressure: Number(request.body.pressure),
+      timeAndDate: d.toLocaleString("en-IE"),  
     };
     
     await readingStore.addReading(station._id, newReading);
     response.redirect("/station/" + station._id);
+  },
+  
+  async deleteReading(request, response) {
+    const stationId = request.params.stationid;
+    const readingId = request.params.readingid;
+    console.log(`Deleting Reading ${readingId} from Station ${stationId}`);
+    await readingStore.deleteReading(readingId);
+    response.redirect("/station/" + stationId);
   },
   
 };

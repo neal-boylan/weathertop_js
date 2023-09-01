@@ -16,18 +16,18 @@
       "_id": "0f92c17b-2cb1-46d4-9e64-372f8b6a1e2a"
     },
     {
-      "name": "Belfast",
-      "latitude": "50",
-      "longitude": "444",
-      "userid": "7e1f35b6-c555-4821-b68f-0420aa501044",
-      "_id": "da835624-d1ab-46d0-a4de-7b91c32d703d"
-    },
-    {
       "name": "Sligo",
       "latitude": "789",
       "longitude": "102",
       "userid": "e22be718-fb58-456c-83a9-05fbad53bcd4",
       "_id": "08fba2a0-2f59-447a-b2eb-7d79bd833adb"
+    },
+    {
+      "name": "Tralee",
+      "latitude": "123",
+      "longitude": "123",
+      "userid": "7e1f35b6-c555-4821-b68f-0420aa501044",
+      "_id": "c7ad10c7-05b2-4522-83f6-c4e945e772bb"
     }
   ]
 }

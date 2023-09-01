@@ -32,5 +32,22 @@ export const readingStore = {
     db.data.readings = [];
     await db.write();
   },
+  
+  async deleteReading(id) {
+    await db.read();
+    const index = db.data.readings.findIndex((reading) => reading._id === id);
+    db.data.readings.splice(index, 1);
+    await db.write();
+  },
+  
+  async updateReading(readingId, updatedReading) {
+    const reading = await this.getReadingById(readingId);
+    reading.code = updatedReading.code;
+    reading.temperature = updatedReading.temperature;
+    reading.windSpeed = updatedReading.windSpeed;
+    reading.windDirection = updatedReading.windDirection;
+    reading.pressure = updatedReading.pressure;
+    await db.write();
+  },
 
 };
